@@ -7,9 +7,9 @@ add_subdirectory(JUCE)
 # Plugin target
 juce_add_plugin(HolySheet
     COMPANY_NAME "Fermin"
-    IS_SYNTH TRUE                       # Shows up as instrument in FL Studio
+    IS_SYNTH TRUE                       # Loads as channel in FL Studio to receive MIDI
     NEEDS_MIDI_INPUT TRUE               # Receives MIDI from piano roll
-    NEEDS_MIDI_OUTPUT FALSE
+    NEEDS_MIDI_OUTPUT TRUE              # Outputs MIDI from notes placed on the staff
     IS_MIDI_EFFECT FALSE
     EDITOR_WANTS_KEYBOARD_FOCUS TRUE
     PLUGIN_MANUFACTURER_CODE Frmn

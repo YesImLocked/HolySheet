@@ -14,12 +14,19 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    // Called from the audio thread via AsyncUpdater
+    void mouseMove(const juce::MouseEvent&) override;
+    void mouseDown(const juce::MouseEvent&) override;
+    void mouseExit(const juce::MouseEvent&) override;
+
     void handleAsyncUpdate() override;
 
 private:
     HolySheetProcessor& processor;
     StaffRenderer staffRenderer;
+    int hoveredLinespace = -999;  // -999 = no hover
+
+    // Convert linespace to MIDI note (assumes C major, no accidentals from click)
+    int linespaceToMidi(int linespace) const;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HolySheetEditor)
 };
